@@ -1,5 +1,7 @@
 package com.swj9707.test_api.v1.products.model;
 
+import com.swj9707.test_api.global.entity.BaseEntity;
+import com.swj9707.test_api.global.entity.BaseTimeEntity;
 import com.swj9707.test_api.v1.productcategory.model.ProductCategory;
 import com.swj9707.test_api.v1.products.dto.ProductReq;
 import jakarta.persistence.*;
@@ -15,8 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Product {
-
+public class Product extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

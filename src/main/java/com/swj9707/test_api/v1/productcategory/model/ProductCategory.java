@@ -1,5 +1,6 @@
 package com.swj9707.test_api.v1.productcategory.model;
 
+import com.swj9707.test_api.global.entity.BaseTimeEntity;
 import com.swj9707.test_api.v1.category.model.Category;
 import com.swj9707.test_api.v1.products.model.Product;
 import jakarta.persistence.*;
@@ -12,7 +13,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductCategory {
+public class ProductCategory extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

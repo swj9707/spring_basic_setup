@@ -1,6 +1,7 @@
 package com.swj9707.test_api.v1.user.model;
 
 import com.swj9707.test_api.global.entity.BaseEntity;
+import com.swj9707.test_api.global.entity.BaseTimeEntity;
 import com.swj9707.test_api.v1.user.dto.UserReq;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,11 +12,12 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "user")
-@Data
+@Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User extends BaseEntity {
+public class User extends BaseTimeEntity {
 
     @Id
     @Column(name = "user_id")

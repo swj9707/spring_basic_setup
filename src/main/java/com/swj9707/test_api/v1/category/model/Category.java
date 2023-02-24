@@ -1,5 +1,7 @@
 package com.swj9707.test_api.v1.category.model;
 
+import com.swj9707.test_api.global.entity.BaseEntity;
+import com.swj9707.test_api.global.entity.BaseTimeEntity;
 import com.swj9707.test_api.v1.category.dto.CategoryReq;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,14 +13,14 @@ import lombok.*;
 @Getter
 @Builder
 @ToString
-public class Category {
+public class Category extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String type;
 
-    public static Category createCategory(CategoryReq.GenerateCategory req){
+    public static Category createCategory(CategoryReq.GenerateCategory req) {
         return Category.builder()
                 .name(req.getName())
                 .type(req.getType())

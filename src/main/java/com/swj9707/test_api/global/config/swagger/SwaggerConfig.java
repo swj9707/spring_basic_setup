@@ -11,7 +11,7 @@ public class SwaggerConfig {
     public OpenAPI openApi() {
         Info info = new Info()
                 .title("Test API Server Docs").version("v1.0.0")
-                .description("Spring Boot 기초 셋업 스터디 교육자료");
+                .description("Spring 스터디 기초 셋업 교육자료");
 
         return new OpenAPI().info(info);
 

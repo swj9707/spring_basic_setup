@@ -26,8 +26,8 @@ public enum CustomError {
     //CONFLICT
     DUPLICATE_USER(HttpStatus.CONFLICT, "이미 해당 유저가 존재합니다.", "ERROR-CF-001"),
     DUPLICATE_PRODUCT_NAME(HttpStatus.CONFLICT, "같은 이름의 상품이 존재합니다.", "ERROR-CF-002"),
-    DUPLICATE_PRODUCT_CATEGORY(HttpStatus.CONFLICT, "중복 된 요청입니다.", "ERROR-CF-003"),
-
+    DUPLICATE_PRODUCT_CATEGORY(HttpStatus.CONFLICT, "이미 상품에 해당 카테고리가 등록 되어있습니다.", "ERROR-CF-003"),
+    DUPLICATE_CATEGORY_NAME(HttpStatus.CONFLICT, "이미 해당 카테고리가 등록 되어있습니다.", "ERROR-CF-004"),
     //INTERNAL SERVER ERROR
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "내부 서버 오류입니다. 관리자에게 문의하세요", "ERROR-ISE-001");
 

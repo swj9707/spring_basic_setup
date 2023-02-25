@@ -19,10 +19,12 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
-    private final ProductRepository productRepository;
-
     @Override
     public CategoryRes.AddCategoryRes addCategory(CategoryReq.GenerateCategory req) {
+        if(categoryRepository.existsByName(req.getName())){
+            throw new CustomException(CustomError.DUPLICATE_CATEGORY_NAME);
+        }
+
         Category category = Category.createCategory(req);
         categoryRepository.save(category);
         return CategoryRes.AddCategoryRes.fromEntity(category);

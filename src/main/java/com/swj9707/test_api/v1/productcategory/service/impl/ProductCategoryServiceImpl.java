@@ -23,12 +23,14 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public ProductCategoryRes.CreateProductCategoryRes createProductCategory(Long categoryId, Long productId) {
+
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new CustomException(CustomError.PRODUCT_NOT_FOUND));
 
-        Category category =  categoryRepository.findById(categoryId)
+        Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new CustomException(CustomError.CATEGORY_NOT_FOUND));
-        if(productCategoryRepository.existsByCategoryIdAndProductId(categoryId, productId)){
+
+        if (productCategoryRepository.existsByCategoryIdAndProductId(categoryId, productId)) {
             throw new CustomException(CustomError.DUPLICATE_PRODUCT_CATEGORY);
         }
 

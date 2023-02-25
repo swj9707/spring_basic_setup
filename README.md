@@ -29,3 +29,7 @@ Spring Boot Project 기초 셋업 아카이브 리포지토리 입니다.
 - 상품 조회 기능
 - 상품 카테고리 등록 기능
 - 상품 카테고리별 조회 기능
+
+# How to use?
+- Docker Compose 를 통해 컨테이너들을 실행시키면 자동으로 MySQL과 매핑 된 데이터 파일들에 의해 기초 셋업이 진행됩니다. 
+- http://localhost:8080/swagger-ui/index.html 에 접속하셔서 API 테스트 진행 해보시면 됩니다. 

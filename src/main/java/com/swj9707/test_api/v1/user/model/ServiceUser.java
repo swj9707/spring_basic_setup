@@ -1,8 +1,8 @@
 package com.swj9707.test_api.v1.user.model;
 
-import com.swj9707.test_api.global.entity.BaseEntity;
 import com.swj9707.test_api.global.entity.BaseTimeEntity;
 import com.swj9707.test_api.v1.user.dto.UserReq;
+import com.swj9707.test_api.v1.user.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -17,14 +17,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User extends BaseTimeEntity {
+public class ServiceUser extends BaseTimeEntity {
 
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.UUID)
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @JdbcTypeCode(java.sql.Types.VARCHAR)
-    private UUID userId;
+    private UUID userId = UUID.randomUUID();
     @Column(name = "user_name")
     private String userName;
 
@@ -34,9 +34,13 @@ public class User extends BaseTimeEntity {
     @Column(name = "user_password")
     private String password;
 
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
-    public static User createUser(UserReq.CreateUser dto) {
-        return User.builder()
+
+    public static ServiceUser createUser(UserReq.CreateUser dto) {
+        return ServiceUser.builder()
                 .userName(dto.getUserName())
                 .userEmail(dto.getUserEmail())
                 .password(dto.getUserPassword())

@@ -1,6 +1,6 @@
 package com.swj9707.test_api.v1.user.dto;
 
-import com.swj9707.test_api.v1.user.model.User;
+import com.swj9707.test_api.v1.user.model.ServiceUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,11 +28,11 @@ public class UserRes {
         private String userName;
         private String userEmail;
 
-        public static UserInfoRes fromEntity(User user) {
+        public static UserInfoRes fromEntity(ServiceUser serviceUser) {
             return UserInfoRes.builder()
-                    .userId(user.getUserId())
-                    .userName(user.getUserName())
-                    .userEmail(user.getUserEmail())
+                    .userId(serviceUser.getUserId())
+                    .userName(serviceUser.getUserName())
+                    .userEmail(serviceUser.getUserEmail())
                     .build();
         }
     }

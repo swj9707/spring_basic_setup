@@ -26,7 +26,7 @@ public final class JwtUtils {
     @Value("${jwt.security.key}")
     private final String secretKey;
 
-    private SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+    private final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
     public static final String REFRESH_TOKEN_NAME = "refresh_token";
     public static final Long ACCESS_TOKEN_VALID_TIME = 5 * 60 * 1000L;

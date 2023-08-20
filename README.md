@@ -32,4 +32,39 @@ Spring Boot Project 기초 셋업 아카이브 리포지토리 입니다.
 
 # How to use?
 - Docker Compose 를 통해 컨테이너들을 실행시키면 자동으로 MySQL과 매핑 된 데이터 파일들에 의해 기초 셋업이 진행됩니다. 
-- http://localhost:8080/swagger-ui/index.html 에 접속하셔서 API 테스트 진행 해보시면 됩니다. 
+- http://localhost:8080/swagger-ui/index.html 에 접속하셔서 API 테스트 진행 해보시면 됩니다.
+
+# How to Build
+- docker-compose.yml 파일 구성은 아래와 같습니다.
+```yaml
+version: "3.8"
+services:
+  mysql:
+    container_name: ex_mysql
+    image: mysql:latest
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/data:/var/lib/mysql
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    env_file: ./db/.env
+    command:
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
+
+  redis:
+    image: redis:alpine
+    command: redis-server --port 6379
+    container_name: ex_redis
+    hostname: ex_redis
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    ports:
+      - 6379:6379
+```
+- `docker compose up -d` 또는 `make up` 명령을 통해 컨테이너들을 작동 시킵니다.
+- 만약 SpringBoot 애플리케이션 또한 컨테이너로 빌드 해 보고 싶으시다면 Dockerfile을 참조 바랍니다.
+- 모든 컨테이너가 작동 중이라면, 로컬에서 Spring Boot 애플리케이션을 실행 시킬 수 있습니다.
+- 또는  docker compose 파일에 Dockerfile 기반으로 빌드 된 컨테이너 정보를 명세시켜 활용 할 수도 있습니다.  
